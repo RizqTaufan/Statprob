@@ -1,0 +1,89 @@
+''' No 1. Diketahui tinggi badan siswa kelas A adalah 100,5 ; 99,7 ; 101 ; 101,3 ; 99,9 ; 98,9 ; 165 ; 102,2 ; 98,7 ; 102,9 ; dan 100. 
+Menggunakan Mean, Median, dan Modus, coba gambarkan pusat distribusi data berikut. Manakah yang paling bagus?'''
+
+#Inisialisasi Dataset  #sum, len, sorted
+data = [100.5, 99.7, 101, 101.3, 99.9, 98.9, 165, 102.2, 98.7, 102.9, 100]
+print(f"Data: {data}")
+
+
+# MEAN
+jumlahNilai = sum(data)
+print(f"Jumlah semua nilai: {jumlahNilai}")
+
+jumlahTotalData = len(data)
+print(f"Jumlah total data: {jumlahTotalData}")
+
+mean = jumlahNilai / jumlahTotalData
+print(f"Mean: {mean}")
+print("")
+
+
+# MEDIAN
+dataUrut = sorted(data)
+print(f"Data berurut: {dataUrut}")
+print(f"Jumlah total data: {jumlahTotalData}")
+
+indexTengah = jumlahTotalData // 2
+
+# Jika jumlah data genap, median adalah rata-rata dari dua nilai tengah 
+if jumlahTotalData % 2 == 0:
+    print(f"Jumlah total data Genap")
+    median1 = dataUrut[indexTengah]
+    median2 = dataUrut[indexTengah - 1]
+    print(f"Nilai tengah: {median1} {median2}")
+    median = (median1 + median2) / 2
+    
+# Jika jumlah data ganjil, median adalah nilai tengah
+else:
+    print(f"Jumlah total data Ganjil")
+    median = dataUrut[indexTengah]
+    print(f"Nilai tengah: {median}")
+
+print(f"Median: {median}")
+print("")
+
+
+
+# MODUS
+#Import library Counter untuk menghitung modus
+from collections import Counter
+
+print(f"Data: {data}")
+
+counter = Counter(data)
+mode_data = dict(counter) # ubah ke tipe data dictionary
+max_counter = max(list(counter.values())) # mencari data yang memiliki counter paling banyak
+print(f"Max Counter: {max_counter}")
+
+mode_value = []
+for k, v in mode_data.items():
+    print(f"{k} muncul {v} kali")
+    if v == max(list(counter.values())):
+        mode_value.append(k)
+    
+print(f"Mode: {mode_value}")
+Data: [100.5, 99.7, 101, 101.3, 99.9, 98.9, 165, 102.2, 98.7, 102.9, 100]
+Jumlah semua nilai: 1170.1000000000001
+Jumlah total data: 11
+Mean: 106.37272727272729
+
+Data berurut: [98.7, 98.9, 99.7, 99.9, 100, 100.5, 101, 101.3, 102.2, 102.9, 165]
+Jumlah total data: 11
+Jumlah total data Ganjil
+Nilai tengah: 100.5
+Median: 100.5
+
+Data: [100.5, 99.7, 101, 101.3, 99.9, 98.9, 165, 102.2, 98.7, 102.9, 100]
+Max Counter: 1
+100.5 muncul 1 kali
+99.7 muncul 1 kali
+101 muncul 1 kali
+101.3 muncul 1 kali
+99.9 muncul 1 kali
+98.9 muncul 1 kali
+165 muncul 1 kali
+102.2 muncul 1 kali
+98.7 muncul 1 kali
+102.9 muncul 1 kali
+100 muncul 1 kali
+Mode: [100.5, 99.7, 101, 101.3, 99.9, 98.9, 165, 102.2, 98.7, 102.9, 100]
